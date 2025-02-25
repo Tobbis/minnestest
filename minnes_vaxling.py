@@ -13,6 +13,7 @@ def minnes_vaxling(screen):
         return 0
 
     score = 0
+    wrong_count = 0  # Added wrong count variable
     rounds = 10
     vowels = "AEIOUY"
     consonants = "BCDFGHJKLMNPQRSTVWXZ"
@@ -42,7 +43,10 @@ def minnes_vaxling(screen):
                 if event.type == pygame.KEYDOWN:
                     if event.key == correct_key:
                         score += 1
-                        responded = True
+                    else:
+                        wrong_count += 1  # Increment wrong count on wrong button press
+                        if wrong_count >= 2:
+                            return score  # End game if two wrong responses
                     responded = True
             if responded:
                 break

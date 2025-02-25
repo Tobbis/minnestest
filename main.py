@@ -35,8 +35,8 @@ from visuellt_span import visuellt_span
 
 def main():
     if main_menu():
-        score1 = minnes_vaxling(screen)
-        score2 = n_back(screen)
+        score1 = 0 #minnes_vaxling(screen)
+        score2 = 0 #n_back(screen)
         score3 = objekt_matching(screen)
         score4 = sifferspan(screen)
         score5 = visuellt_span(screen)

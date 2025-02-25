@@ -23,7 +23,7 @@ def n_back(screen):
 
         for round_num in range(rounds_in_level):
             # generera en längre sekvens (12 siffror)
-            sequence = [random.randint(0, 9) for _ in range(12)]
+            sequence = [random.randint(0, 6) for _ in range(12)]
             round_score = 0
 
             for i in range(len(sequence)):
@@ -67,14 +67,28 @@ def n_back(screen):
         total_score += level_score
 
         if error_occurred:
+            # Display failure message and wait for Enter before exiting this game
+            screen.fill(BLACK)
+            draw_text(screen, "Ingen match tyvärr!", 200, 250)
+            draw_text(screen, f"Poäng: {total_score}", 200, 300)
+            draw_text(screen, "Tryck på Enter för nästa spel.", 200, 350)
+            pygame.display.flip()
+            waiting = True
+            while waiting:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        return total_score
+                    if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                        waiting = False
             break
 
         # level completed successfully; show transition message
         screen.fill(BLACK)
         draw_text(screen, f"Grattis! Du har klarat nivå {level}!", 200, 250)
         draw_text(screen, "Nu går vi vidare till nästa nivå.", 200, 300)
-        draw_text(screen, f"Regler: Kom ihåg vad som visas {level+1} steg tidigare.", 200, 350)
-        draw_text(screen, "Tryck på mellanslag om det matchar.", 200, 400)
+        # draw_text(screen, f"Regler: Kom ihåg vad som visas {level+1} steg tidigare.", 200, 350)
+        # draw_text(screen, "Tryck på mellanslag om det matchar.", 200, 400)
         pygame.display.flip()
 
         # wait for the Enter key to continue

@@ -3,6 +3,9 @@ import pygame
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
+YELLOW = (255, 255, 0)
 # Ändrad fontstorlek från 50 till 40
 font = pygame.font.Font(None, 40)
 
